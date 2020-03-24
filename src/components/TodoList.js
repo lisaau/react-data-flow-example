@@ -4,11 +4,18 @@ import Filters from "./Filters";
 class TodoList extends Component {
   render() {
     const { todos, actions, filters } = this.props;
+    let visibleTodos = todos;
+    if (filters.completedHidden) {
+      visibleTodos = visibleTodos.filter(todo => !todo.isCompleted);
+    }
     return (
       <div>
-        <h3>TODOs ({todos.length})</h3>
-        <Filters hideCompleted={filters.hideCompleted} />
-        {this.props.todos.map(todo => (
+        <h3>TODOs ({visibleTodos.length})</h3>
+        <Filters
+          filters={filters}
+          toggleHideCompleted={actions.toggleHideCompleted}
+        />
+        {visibleTodos.map(todo => (
           <Todo
             key={todo.id}
             todo={todo}
