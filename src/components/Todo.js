@@ -3,6 +3,7 @@ class Todo extends Component {
   render() {
     const classes = ["todo"];
     const { id, isCompleted, text } = this.props.todo;
+    
     if (isCompleted) {
       classes.push("completed");
     }
@@ -10,6 +11,15 @@ class Todo extends Component {
       const newValue = !isCompleted;
       this.props.updateTodoCompleted(id, newValue);
     };
+
+    // if (this.props.filter === false && isCompleted) {
+    //   classes.push('hide')
+    // }
+
+    if (this.props.filter === false && isCompleted) {
+      return null;
+    }
+
     return (
       <div className={classes.join(" ")}>
         <label>
