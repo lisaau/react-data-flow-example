@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 class Todo extends Component {
   render() {
     const classes = ["todo"];
@@ -7,8 +8,7 @@ class Todo extends Component {
       classes.push("completed");
     }
     const onToggle = () => {
-      const newValue = !isCompleted;
-      this.props.updateTodoCompleted(id, newValue);
+      this.props.toggleTodoCompletion(id);
     };
     return (
       <div className={classes.join(" ")}>
