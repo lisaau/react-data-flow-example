@@ -20,11 +20,12 @@ const STARTER_STATE = {
   ],
   showAll: true
 };
+// import { updatedCopy, replaceElement } from "./immutable";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = STARTER_STATE;
+    this.state = STARTER_STATE
   }
   render() {
     const actions = {
@@ -57,6 +58,30 @@ class App extends Component {
           <TodoList todos={this.state.todos} actions={actions} filter={this.state.showAll}/>
       </>
     )
+    //   toggleTodoCompletion: todoId => {
+    //     // Keep it all immutable ftw (not required for React to work)
+    //     // (my Twitter handle is @immutabill for a reason)
+    //     const { todos } = this.state;
+    //     const idx = todos.findIndex(todo => todo.id === todoId);
+    //     const todo = todos[idx];
+    //     const updatedTodo = updatedCopy(todo, "isCompleted", !todo.isCompleted);
+    //     const updatedTodos = replaceElement(todos, idx, updatedTodo);
+    //     // Calling .setState **is required** for React to know it needs to update
+    //     this.setState({ todos: updatedTodos });
+    //   },
+    //   toggleHideCompleted: () => {
+    //     this.setState({
+    //       filters: { completedHidden: !this.state.filters.completedHidden }
+    //     });
+    //   }
+    // };
+    // return (
+    //   <TodoList
+    //     filters={this.state.filters}
+    //     todos={this.state.todos}
+    //     actions={actions}
+    //   />
+    // );
   }
 }
 
